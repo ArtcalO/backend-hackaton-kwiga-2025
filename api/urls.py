@@ -5,11 +5,14 @@ from rest_framework_simplejwt.views import TokenRefreshView
 
 router = routers.DefaultRouter()
 
-router.register(r'folders', FolderViewSet, basename='folders')
 router.register(r'files', FileViewSet, basename='files')
-router.register(r'shared', SharedFileViewSet, basename='shared')
-router.register(r'galleries', GalleryViewSet)
-router.register(r'shared-galleries', SharedGalleryViewSet)
+router.register(r'academic-years', AcademicYearViewSet, basename='academic-years')
+router.register(r'degrees', DegreeViewSet, basename='degrees')
+router.register(r'universities', UniversityViewSet, basename='universities')
+router.register(r'academic-degrees', AcademicDegreeViewSet, basename='academic-degrees')
+router.register(r'faculties', FacultyViewSet, basename='faculties')
+router.register(r'departments', DepartmentViewSet, basename='departments')
+router.register(r'courses', CourseViewSet, basename='courses')
 router.register(r'root', RootViewSet,  basename='root')
 
 urlpatterns = [
