@@ -1,0 +1,13 @@
+*.pyc
+*.pyd
+????_*.py
+*.sqlite3*
+/media
+
+**__pycache__
+
+/dist
+.htaccess
+passenger_wsgi.py
+stderr.log
+/static/*
