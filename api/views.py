@@ -202,9 +202,9 @@ def receive_whatsapp_message(request):
     from_number = request.POST.get('From', '')
     to_number = request.POST.get('To', '')
     # message_sid = request.POST.get('MessageSid', '')
-    logger.info("message_body",message_body)
-    logger.info("from_number",from_number)
-    logger.info("to_number",to_number)
+    logger.info("message_body {message_body}")
+    logger.info("from_number {from_number}")
+    logger.info("to_number {to_number}")
     sendMessage(from_number,message_body)
     
     # Exemple de réponse automatique
