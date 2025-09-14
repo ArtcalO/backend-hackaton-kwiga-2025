@@ -155,6 +155,7 @@ class SendWhatsAppMessage(APIView):
                 body=message_text,
                 to=f"whatsapp:{to_number}"
             )
+            print(message)
 
             return Response({"status": "Message envoyé", "sid": message.sid})
         except Exception as e:
