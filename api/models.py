@@ -102,6 +102,7 @@ class File(UidModel):
     file_category = models.CharField(max_length=20, choices=FILE_CATEGORY, default='cours')
     is_trashed = models.BooleanField(default=False)
     uploaded_by = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='files', null=True, blank=True)
+    nb_retrieved = models.PositiveBigIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
