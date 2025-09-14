@@ -170,6 +170,7 @@ class SendWhatsAppMessage(APIView):
 def sendMessage(to, msg):
         # Récupérer les données envoyées par le client
         to_number = to
+        logger.info(to)
         message_text = msg
         if not to_number or not message_text:
             return Response({"error": "Numéro et message requis"}, status=status.HTTP_400_BAD_REQUEST)
@@ -200,13 +201,11 @@ def receive_whatsapp_message(request):
     message_body = request.POST.get('Body', '')
     from_number = request.POST.get('From', '')
     to_number = request.POST.get('To', '')
-    message_sid = request.POST.get('MessageSid', '')
-    msg = f"Nouveau message de {from_number}: {message_body}, {to_number}, {message_sid}"
-    
-    resp = MessagingResponse()
-    resp.message("hOLLA")
-    logger.info(resp)
-    #sendMessage(from_number,msg)
+    # message_sid = request.POST.get('MessageSid', '')
+    logger.info("message_body",message_body)
+    logger.info("from_number",from_number)
+    logger.info("to_number",to_number)
+    sendMessage(from_number,message_body)
     
     # Exemple de réponse automatique
     # return Response({
