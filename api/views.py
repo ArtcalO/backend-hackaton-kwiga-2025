@@ -196,12 +196,13 @@ def sendMessage(to, msg):
 @api_view(["POST"])
 def receive_whatsapp_message(request):
     # Configuration logging
-    logger.info(dir(request))
-    from_number = request.data.get("From")
-    message_body = request.data.get("Body")
-    to_number = request.data.get("To")
-    msg = f"Nouveau message de {from_number}: {message_body}"
-    # Tu peux sauvegarder le message dans ta base de données ici
+    logger.info(request.POST)
+    message_body = request.POST.get('Body', '')
+    from_number = request.POST.get('From', '')
+    to_number = request.POST.get('To', '')
+    message_sid = request.POST.get('MessageSid', '')
+    msg = f"Nouveau message de {from_number}: {message_body}, {to_number}, {message_sid}"
+    logger.info(msg)
     
     resp = MessagingResponse()
     resp.message("hOLLA")
