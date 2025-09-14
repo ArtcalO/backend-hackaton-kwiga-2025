@@ -3,7 +3,7 @@
 ????_*.py
 *.sqlite3*
 /media
-
+.env
 **__pycache__
 
 /dist
