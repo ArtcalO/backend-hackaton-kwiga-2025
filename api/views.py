@@ -169,8 +169,7 @@ class SendWhatsAppMessage(APIView):
 # class SendWhatsAppMessage(APIView):
 def sendMessage(to, msg):
         # Récupérer les données envoyées par le client
-        to_number = to
-        logger.info(to)
+        to_number = to.split(":")[1]
         message_text = msg
         if not to_number or not message_text:
             return Response({"error": "Numéro et message requis"}, status=status.HTTP_400_BAD_REQUEST)
@@ -182,7 +181,7 @@ def sendMessage(to, msg):
             client = Client(account_sid, auth_token)
             message = client.messages.create(
                 from_="whatsapp:+14155238886",  # Numéro sandbox Twilio
-                body=message_text,
+                body=f"twaronse {message_text}",
                 to=f"whatsapp:{to_number}"
             )
             
@@ -200,11 +199,6 @@ def receive_whatsapp_message(request):
     
     message_body = request.POST.get('Body', '')
     from_number = request.POST.get('From', '')
-    to_number = request.POST.get('To', '')
-    # message_sid = request.POST.get('MessageSid', '')
-    logger.info(f"message_body {message_body}")
-    logger.info(f"from_number {from_number}")
-    logger.info(f"to_number {to_number}")
     sendMessage(from_number,message_body)
     
     # Exemple de réponse automatique
