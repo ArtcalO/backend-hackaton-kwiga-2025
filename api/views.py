@@ -201,9 +201,10 @@ def receive_whatsapp_message(request):
     print(f"Nouveau message de {from_number}: {message_body}")
 
     # Exemple de réponse automatique
-    return Response({
-        "status": "message reçu",
-        "from": from_number,
-        "to": to_number,
-        "body": message_body
-    })
+    # return Response({
+    #     "status": "message reçu",
+    #     "from": from_number,
+    #     "to": to_number,
+    #     "body": message_body
+    # })
+    return Response("<Response></Response>", content_type='application/xml', status=status.HTTP_200_OK)
