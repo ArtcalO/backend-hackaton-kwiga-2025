@@ -195,10 +195,10 @@ def receive_whatsapp_message(request):
     from_number = request.data.get("From")
     message_body = request.data.get("Body")
     to_number = request.data.get("To")
-    msg = f"📩 Nouveau message de {from_number}: {message_body}"
+    msg = f"Nouveau message de {from_number}: {message_body}"
     sendMessage(from_number,msg)
     # Tu peux sauvegarder le message dans ta base de données ici
-    print(f"📩 Nouveau message de {from_number}: {message_body}")
+    print(f"Nouveau message de {from_number}: {message_body}")
 
     # Exemple de réponse automatique
     return Response({
