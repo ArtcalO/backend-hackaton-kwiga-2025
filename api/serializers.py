@@ -50,7 +50,7 @@ class FileSerializer(serializers.ModelSerializer):
     class Meta:
         model = File
         fields = [
-            'uuid', 'name', 'file', 'uploaded_by', 'size', 
+            'uuid', 'name', 'file', 'uploaded_by', 'size','course' ,
             'file_type', 'is_trashed', 'created_at', 'updated_at',
         ]
         read_only_fields = ['uploaded_by', 'size', 'file_type', 'created_at', 'updated_at']
