@@ -116,7 +116,6 @@ class FileViewSet(viewsets.ModelViewSet):
 		'file_type': ['icontains'],
 		'file_category': ['icontains'],
 		'course':['exact'],
-		'department':['exact'],
 	}
 
 	def get_queryset(self):
