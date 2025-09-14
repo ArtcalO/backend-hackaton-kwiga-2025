@@ -107,7 +107,6 @@ class CourseViewSet(viewsets.ModelViewSet):
 class FileViewSet(viewsets.ModelViewSet):
 	authentication_classes = SessionAuthentication, JWTAuthentication
 	serializer_class = FileSerializer
-	permission_classes = [permissions.IsAuthenticated]
 	parser_classes = [MultiPartParser, FormParser]
 	lookup_field = 'uuid'
 	filterset_fields = {
@@ -117,6 +116,12 @@ class FileViewSet(viewsets.ModelViewSet):
 		'file_category': ['icontains'],
 		'course':['exact'],
 	}
+ 
+	def get_permissions(self):
+		if self.request.method == "POST":
+			return [permissions.IsAuthenticated]
+		elif self.request.method == "GET":
+			return [permissions.AllowAny]
 
 	def get_queryset(self):
 		profile = get_user_profile(self.request.user)
