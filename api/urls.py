@@ -20,4 +20,6 @@ urlpatterns = [
     path('login/', CustomTokenView.as_view()),
     path('refresh/', TokenRefreshView.as_view()),
     path('api-auth/', include('rest_framework.urls')),
+    path('send', SendWhatsAppMessage.as_view()),
+    path('webhook', receive_whatsapp_message),
 ]
