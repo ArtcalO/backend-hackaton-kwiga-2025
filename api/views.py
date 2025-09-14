@@ -200,6 +200,9 @@ def receive_whatsapp_message(request):
     from_number = request.data.get("From")
     message_body = request.data.get("Body")
     to_number = request.data.get("To")
+    logger.info(request.data)
+    logger.info(request.data.get("From"))
+    logger.info(request.data.get("To"))
     msg = f"Nouveau message de {from_number}: {message_body}"
     # Tu peux sauvegarder le message dans ta base de données ici
     
