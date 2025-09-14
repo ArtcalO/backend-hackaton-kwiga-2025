@@ -196,16 +196,16 @@ def sendMessage(to, msg):
 @api_view(["POST"])
 def receive_whatsapp_message(request):
     # Configuration logging
-    logger.info(request.POST)
+    
     message_body = request.POST.get('Body', '')
     from_number = request.POST.get('From', '')
     to_number = request.POST.get('To', '')
     message_sid = request.POST.get('MessageSid', '')
     msg = f"Nouveau message de {from_number}: {message_body}, {to_number}, {message_sid}"
-    logger.info(msg)
     
     resp = MessagingResponse()
     resp.message("hOLLA")
+    logger.info(resp)
     #sendMessage(from_number,msg)
     
     # Exemple de réponse automatique
