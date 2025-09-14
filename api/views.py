@@ -119,9 +119,9 @@ class FileViewSet(viewsets.ModelViewSet):
  
 	def get_permissions(self):
 		if self.request.method == "POST":
-			return [permissions.IsAuthenticated]
+			return [permissions.IsAuthenticated()]
 		elif self.request.method == "GET":
-			return [permissions.AllowAny]
+			return [permissions.AllowAny()]
 
 	def get_queryset(self):
 		profile = get_user_profile(self.request.user)
