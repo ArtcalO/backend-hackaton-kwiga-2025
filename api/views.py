@@ -20,6 +20,7 @@ import logging
 from datetime import datetime
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+from twilio.twiml.messaging_response import MessagingResponse
 
 load_dotenv()
 
@@ -170,9 +171,6 @@ def sendMessage(to, msg):
         # Récupérer les données envoyées par le client
         to_number = to
         message_text = msg
-        
-        logger.info(f"Nouveau message de {to_number}: {msg}")
-
         if not to_number or not message_text:
             return Response({"error": "Numéro et message requis"}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -198,14 +196,16 @@ def sendMessage(to, msg):
 @api_view(["POST"])
 def receive_whatsapp_message(request):
     # Configuration logging
-    
+    logger.info(request)
     from_number = request.data.get("From")
     message_body = request.data.get("Body")
     to_number = request.data.get("To")
     msg = f"Nouveau message de {from_number}: {message_body}"
     # Tu peux sauvegarder le message dans ta base de données ici
-    logger.info(f"Nouveau message de {from_number}: {message_body}")
-    sendMessage(from_number,msg)
+    
+    resp = MessagingResponse()
+    resp.message("hOLLA")
+    #sendMessage(from_number,msg)
     
     # Exemple de réponse automatique
     # return Response({
@@ -214,4 +214,4 @@ def receive_whatsapp_message(request):
     #     "to": to_number,
     #     "body": message_body
     # })
-    return Response("<Response></Response>", content_type='application/xml', status=status.HTTP_200_OK)
+    return Response("<Response>Ok</Response>", content_type='application/xml', status=status.HTTP_200_OK)
