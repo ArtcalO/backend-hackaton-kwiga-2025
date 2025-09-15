@@ -79,7 +79,7 @@ class Course(models.Model):
     department = models.ForeignKey(Department, on_delete=models.CASCADE, null=True, blank=True)
     academic_year = models.ForeignKey(AcademicYear, on_delete=models.CASCADE)
     academic_degree = models.ForeignKey(AcademicDegree, on_delete=models.CASCADE)
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=100)
 
     def __str__(self):
         return f"{self.name}"
@@ -103,6 +103,12 @@ class File(UidModel):
     is_trashed = models.BooleanField(default=False)
     uploaded_by = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='files', null=True, blank=True)
     nb_retrieved = models.PositiveBigIntegerField(default=0)
+    
+    university = models.TextField(null=True,blank=True)
+    faculty = models.TextField(null=True,blank=True)
+    department = models.TextField(null=True,blank=True)
+    professor = models.TextField(null=True, blank=True)
+    year = models.TextField(null=True,blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
