@@ -93,7 +93,7 @@ class File(UidModel):
 	]
         
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    title = models.CharField(max_length=255, blank=True, null=True)
+    name = models.CharField(max_length=255, blank=True, null=True)
     description = models.CharField(max_length=255, blank=True, null=True)
     file = models.FileField(upload_to="fichiers/", null=True, blank=True)
     text = models.TextField(null=True, blank=True)
