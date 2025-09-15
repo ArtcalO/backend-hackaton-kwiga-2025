@@ -129,7 +129,7 @@ class FileViewSet(viewsets.ModelViewSet):
     parser_classes = [MultiPartParser, FormParser]
     lookup_field = 'uuid'
     filterset_fields = {
-        'title': ['icontains'],
+        'name': ['icontains'],
         'description': ['icontains'],
         'file_type': ['icontains'],
         'file_category': ['icontains'],
