@@ -82,6 +82,11 @@ class AcademicDegreeViewSet(viewsets.ModelViewSet):
     queryset = AcademicDegree.objects.all()
     serializer_class = AcademicDegreeSerializer
     permission_classes = permissions.IsAuthenticated,
+    filter_backends = [filters.DjangoFilterBackend, ]
+    filterset_fields = {
+        'university': ['exact'],
+        'degree':['exact'],
+    }
 
 class FacultyViewSet(viewsets.ModelViewSet):
     authentication_classes = SessionAuthentication, JWTAuthentication
